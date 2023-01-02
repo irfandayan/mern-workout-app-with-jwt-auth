@@ -2,6 +2,7 @@ const dotenv = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
 const workoutRoutes = require("./routes/workout");
+const userRoutes = require("./routes/user");
 
 // get environment configure variables
 dotenv.config();
@@ -28,6 +29,8 @@ app.use((req, res, next) => {
 
 // workout routes
 app.use("/api/workouts", workoutRoutes);
+// user routes
+app.use("/api/user", userRoutes);
 
 // mongoose
 mongoose.set("strictQuery", true);

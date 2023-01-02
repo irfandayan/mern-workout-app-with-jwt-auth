@@ -1,6 +1,4 @@
 const Workout = require("../models/workoutModel");
-const mongoose = require("mongoose");
-const verifyMongooseId = require("../middlewares/verifyId");
 
 // get all workouts
 const getWorkouts = async (req, res) => {
