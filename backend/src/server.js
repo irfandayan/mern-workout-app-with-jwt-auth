@@ -1,8 +1,8 @@
 const dotenv = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
-const workoutRoutes = require("./routes/workout");
-const userRoutes = require("./routes/user");
+const workoutRoutes = require("./api/routes/workout");
+const userRoutes = require("./api/routes/user");
 
 // get environment configure variables
 dotenv.config();
