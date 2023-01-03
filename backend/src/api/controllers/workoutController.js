@@ -2,7 +2,10 @@ const Workout = require("../models/workoutModel");
 
 // get all workouts
 const getWorkouts = async (req, res) => {
-  const workouts = await Workout.find({}).sort({ createdAt: -1 });
+  // grab the user id which is passed by requireAuth middleware
+  const user_id = req.user._id;
+
+  const workouts = await Workout.find({ user_id }).sort({ createdAt: -1 });
   res.status(200).json(workouts);
 };
 
@@ -44,10 +47,14 @@ const createWorkout = async (req, res) => {
 
   // add document to db
   try {
+    // grab the user id which is passed by requireAuth middleware
+    const user_id = req.user._id;
+
     const workout = await Workout.create({
       title,
       load,
       reps,
+      user_id,
     });
     res.status(200).json(workout);
   } catch (error) {

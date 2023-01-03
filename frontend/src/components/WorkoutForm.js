@@ -1,8 +1,12 @@
 import { useState } from "react";
+
+// custom hooks
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const WorkoutForm = () => {
   const { dispatch } = useWorkoutsContext();
+  const { user } = useAuthContext();
 
   const [title, setTitle] = useState("");
   const [load, setlLoad] = useState("");
@@ -12,6 +16,12 @@ const WorkoutForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // if there is no user then don't even try to make the below fetch request, just return.
+    if (!user) {
+      setError("You must be logged in");
+      return;
+    }
 
     const workout = {
       title,
@@ -24,6 +34,7 @@ const WorkoutForm = () => {
       body: JSON.stringify(workout),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
       },
     });
 
