@@ -1,4 +1,5 @@
 const dotenv = require("dotenv");
+const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 const workoutRoutes = require("./api/routes/workout");
@@ -11,6 +12,9 @@ const PORT = process.env.PORT;
 
 // express app
 const app = express();
+
+// cors
+app.use(cors());
 
 // middlewares
 app.use(express.json());
