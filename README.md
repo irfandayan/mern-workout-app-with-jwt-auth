@@ -1,6 +1,6 @@
-<h1><a href=""> Live Site </a></h1>
+<h1><a href="https://workout-app79.netlify.app/"> Live Site </a></h1>
 
-<h2>MERN Stack - Project Managment APP</h2>
+<h2>MERN Stack - Workout App</h2>
 
 <h4>Built in:</h4>
 <h4>FrontEnd</h4>
